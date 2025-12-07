@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salud Mental - Ansiedad y Depresión</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f7fa;
+    }
+
+    .contenedor {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .encabezado {
+      background-color: #a282ff;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .titulo-principal {
+      font-size: 48px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .subtitulo {
+      font-size: 20px;
+      font-weight: 300;
+    }
+
+    .navegacion {
+      background-color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .lista-navegacion {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+    }
+
+    .lista-navegacion li {
+      margin: 0;
+    }
+
+    .lista-navegacion a {
+      display: block;
+      padding: 20px 25px;
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .lista-navegacion a.activo {
+      background-color: #667eea;
+      color: white;
+      font-weight: 700;
+    }
+
+
+    .contenido-principal {
+      padding: 60px 0;
+    }
+
+    .seccion {
+      margin-bottom: 80px;
+    }
+
+    .titulo-seccion {
+      font-size: 36px;
+      color: #2d3748;
+      margin-bottom: 30px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+
+    .tarjeta {
+      background-color: white;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 25px;
+    }
+
+    .titulo-tarjeta {
+      font-size: 24px;
+      color: #2d3748;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .texto {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #4a5568;
+      margin-bottom: 15px;
+    }
+
+
+    .tarjeta-destacada {
+      background-color: #a282ff;
+      color: white;
+    }
+
+    .tarjeta-destacada .titulo-tarjeta,
+    .tarjeta-destacada .texto {
+      color: white;
+    }
+
+    .tarjeta-importante {
+      background-color: #edf2f7;
+    }
+
+
+    .contenedor-columnas {
+      display: flex;
+      gap: 25px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .columna {
+      flex: 1;
+      min-width: 300px;
+    }
+
+
+    .lista-sintomas {
+      list-style: none;
+      padding: 0;
+    }
+
+    .lista-sintomas li {
+      padding: 12px 0 12px 30px;
+      position: relative;
+      font-size: 15px;
+      color: #4a5568;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .lista-sintomas li:last-child {
+      border-bottom: none;
+    }
+
+    .lista-sintomas li:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #48bb78;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+
+    .alerta-emergencia {
+      background-color: #fed7d7;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .titulo-alerta {
+      font-size: 24px;
+      color: #c53030;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .texto-alerta {
+      font-size: 18px;
+      color: #742a2a;
+      font-weight: 600;
+    }
+
+
+    .contenedor-recursos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .recurso {
+      background-color: white;
+      border-radius: 12px;
+      padding: 25px;
+    }
+
+    .titulo-recurso {
+      font-size: 20px;
+      color: #2d3748;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .lista-recursos {
+      list-style: none;
+      padding: 0;
+    }
+
+    .lista-recursos li {
+      padding: 10px 0;
+      color: #4a5568;
+      font-size: 15px;
+    }
+
+    .lista-recursos li:last-child {
+      border-bottom: none;
+    }
+
+
+    .pie-pagina {
+      background-color: #2d3748;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .texto-footer {
+      font-size: 14px;
+      margin-bottom: 10px;
+      opacity: 0.9;
+    }
+
+
+    @media (max-width: 768px) {
+      .titulo-principal {
+        font-size: 36px;
+      }
+
+      .subtitulo {
+        font-size: 18px;
+      }
+
+      .titulo-seccion {
+        font-size: 28px;
+      }
+
+      .lista-navegacion {
+        flex-direction: column;
+      }
+
+      .lista-navegacion a {
+        padding: 15px 20px;
+        text-align: center;
+      }
+
+      .contenedor-columnas {
+        flex-direction: column;
+      }
+
+      .columna {
+        min-width: 100%;
+      }
+
+      .contenedor-recursos {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+<body>
+<header class="encabezado">
+  <div class="contenedor">
+    <h1 class="titulo-principal">Salud Mental</h1>
+    <p class="subtitulo">Información sobre Ansiedad y Depresión</p>
+  </div>
+</header>
+
+<nav class="navegacion">
+  <div class="contenedor">
+    <ul class="lista-navegacion">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#que-es">Qué Es</a></li>
+      <li><a href="#sintomas">Síntomas</a></li>
+      <li><a href="#superacion">Superación</a></li>
+      <li><a href="#contactos">Contactos</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="contenido-principal">
+  <!-- SECCIÓN INICIO -->
+  <section id="inicio" class="seccion">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Bienvenido a Salud Mental</h2>
+
+      <div class="tarjeta tarjeta-destacada">
+        <h3 class="titulo-tarjeta">Tu Guía Completa sobre Ansiedad y Depresión</h3>
+        <p class="texto">Este sitio web está diseñado para proporcionar información valiosa sobre dos de los trastornos de salud mental más comunes: la ansiedad y la depresión. Aquí encontrarás recursos, información y apoyo para entender y manejar estas condiciones.</p>
+      </div>
+
+      <div class="contenedor-columnas">
+        <div class="columna">
+          <div class="tarjeta tarjeta-azul">
+            <h3 class="titulo-tarjeta">¿Por qué es importante?</h3>
+            <p class="texto">Los trastornos de ansiedad y depresión afectan a millones de personas en todo el mundo. Reconocer los síntomas y buscar ayuda temprana puede marcar una diferencia significativa en la recuperación.</p>
+          </div>
+        </div>
+
+        <div class="columna">
+          <div class="tarjeta tarjeta-morada">
+            <h3 class="titulo-tarjeta">No estás solo</h3>
+            <p class="texto">Muchas personas experimentan estos trastornos. Con el tratamiento y apoyo adecuados, es posible recuperarse y vivir una vida plena y satisfactoria.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <h3 class="titulo-tarjeta">¿Qué encontrarás en este sitio?</h3>
+        <ul class="lista-sintomas">
+          <li><strong>Qué Es:</strong> Información detallada sobre qué son la ansiedad y la depresión</li>
+          <li><strong>Síntomas:</strong> Listado completo de síntomas comunes de ambos trastornos</li>
+          <li><strong>Superación:</strong> Estrategias y métodos efectivos para superar estos trastornos</li>
+          <li><strong>Contactos:</strong> Recursos, líneas de ayuda y profesionales disponibles</li>
+        </ul>
+      </div>
+
+      <div class="alerta-emergencia">
+        <h3 class="titulo-alerta">⚠️ Importante</h3>
+        <p class="texto-alerta">Si estás experimentando una crisis o pensamientos suicidas, por favor busca ayuda inmediatamente. Visita nuestra sección de <a href="#contactos" style="color: white; text-decoration: underline;">Contactos</a> para líneas de ayuda de emergencia.</p>
+      </div>
+
+      <div class="tarjeta tarjeta-importante">
+        <h3 class="titulo-tarjeta">Nota Importante</h3>
+        <p class="texto">Esta página es solo para fines informativos y educativos. <strong>No reemplaza el consejo, diagnóstico o tratamiento médico profesional.</strong> Siempre consulta con un profesional de la salud mental calificado para obtener ayuda personalizada.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN QUÉ ES -->
+  <section id="que-es" class="seccion">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">¿Qué es la Ansiedad y la Depresión?</h2>
+
+      <div class="tarjeta">
+        <h3 class="titulo-tarjeta">Ansiedad</h3>
+        <p class="texto">La ansiedad es una respuesta natural del cuerpo al estrés. Es un sentimiento de miedo o aprensión sobre lo que está por venir. Sin embargo, cuando la ansiedad se vuelve excesiva, puede interferir con las actividades diarias y convertirse en un trastorno.</p>
+        <p class="texto">Los trastornos de ansiedad son las condiciones de salud mental más comunes, afectando a millones de personas en todo el mundo.</p>
+      </div>
+
+      <div class="tarjeta">
+        <h3 class="titulo-tarjeta">Depresión</h3>
+        <p class="texto">La depresión es un trastorno del estado de ánimo que causa un sentimiento persistente de tristeza y pérdida de interés. Afecta cómo te sientes, piensas y te comportas, y puede llevar a una variedad de problemas emocionales y físicos.</p>
+        <p class="texto">No es simplemente sentirse triste ocasionalmente, sino una condición seria que requiere tratamiento y comprensión.</p>
+      </div>
+
+      <h2 class="titulo-seccion">¿Qué Provoca la Ansiedad y la Depresión?</h2>
+
+      <div class="tarjeta">
+        <h3 class="titulo-tarjeta">Factores Biológicos</h3>
+        <p class="texto">Desequilibrios químicos en el cerebro, genética, cambios hormonales y condiciones médicas pueden contribuir al desarrollo de estos trastornos.</p>
+      </div>
+
+      <div class="tarjeta">
+        <h3 class="titulo-tarjeta">Factores Psicológicos</h3>
+        <p class="texto">Traumas pasados, baja autoestima, patrones de pensamiento negativos y problemas de salud mental previos pueden aumentar el riesgo.</p>
+      </div>
+
+      <div class="tarjeta">
+        <h3 class="titulo-tarjeta">Factores Ambientales</h3>
+        <p class="texto">Estrés laboral, problemas financieros, conflictos familiares, pérdida de seres queridos, aislamiento social y eventos traumáticos pueden desencadenar estos trastornos.</p>
+      </div>
+
+      <div class="tarjeta">
+        <h3 class="titulo-tarjeta">Estilo de Vida</h3>
+        <p class="texto">Falta de ejercicio, mala alimentación, consumo de sustancias, falta de sueño y falta de actividades significativas pueden contribuir.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN SÍNTOMAS -->
+  <section id="sintomas" class="seccion">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Síntomas Comunes</h2>
+
+      <div class="contenedor-columnas">
+        <div class="columna">
+          <div class="tarjeta tarjeta-azul">
+            <h3 class="titulo-tarjeta">Síntomas de Ansiedad</h3>
+            <ul class="lista-sintomas">
+              <li>Nerviosismo o inquietud constante</li>
+              <li>Sensación de peligro inminente</li>
+              <li>Aumento del ritmo cardíaco</li>
+              <li>Respiración acelerada (hiperventilación)</li>
+              <li>Sudoración excesiva</li>
+              <li>Temblores</li>
+              <li>Dificultad para concentrarse</li>
+              <li>Problemas para dormir</li>
+              <li>Problemas gastrointestinales</li>
+              <li>Evitar situaciones que causan ansiedad</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="columna">
+          <div class="tarjeta tarjeta-morada">
+            <h3 class="titulo-tarjeta">Síntomas de Depresión</h3>
+            <ul class="lista-sintomas">
+              <li>Tristeza persistente o sensación de vacío</li>
+              <li>Pérdida de interés en actividades</li>
+              <li>Cambios en el apetito y peso</li>
+              <li>Insomnio o dormir demasiado</li>
+              <li>Fatiga y falta de energía</li>
+              <li>Sentimientos de inutilidad o culpa</li>
+              <li>Dificultad para pensar o concentrarse</li>
+              <li>Movimientos lentos o agitación</li>
+              <li>Dolores físicos sin causa aparente</li>
+              <li>Pensamientos de muerte o suicidio</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="alerta-emergencia">
+        <h3 class="titulo-alerta">⚠️ Cuándo buscar ayuda inmediata</h3>
+        <p class="texto-alerta">Si experimentas pensamientos suicidas, automutilación, o síntomas que interfieren gravemente con tu vida diaria, busca ayuda profesional de inmediato. Visita nuestra sección de <a href="#contactos" style="color: white; text-decoration: underline;">Contactos</a>.</p>
+      </div>
+
+      <div class="tarjeta tarjeta-importante">
+        <h3 class="titulo-tarjeta">Importante Recordar</h3>
+        <p class="texto">No todas las personas experimentan todos estos síntomas. La severidad y duración de los síntomas varían de persona a persona. Si reconoces varios de estos síntomas en ti mismo o en alguien cercano, es importante buscar evaluación profesional.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN SUPERACIÓN -->
+  <section id="superacion" class="seccion">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Formas de Superar la Ansiedad y la Depresión</h2>
+
+      <div class="tarjeta tarjeta-destacada">
+        <h3 class="titulo-tarjeta">1. Buscar Ayuda Profesional</h3>
+        <p class="texto"><strong>Lo más importante:</strong> Consultar con un psicólogo o psiquiatra. La terapia cognitivo-conductual (TCC) y otros tratamientos profesionales son muy efectivos.</p>
+      </div>
+
+      <div class="contenedor-columnas">
+        <div class="columna">
+          <div class="tarjeta">
+            <h3 class="titulo-tarjeta">2. Ejercicio Regular</h3>
+            <p class="texto">La actividad física libera endorfinas, mejora el estado de ánimo y reduce el estrés. Intenta hacer 30 minutos al día.</p>
+          </div>
+        </div>
+
+        <div class="columna">
+          <div class="tarjeta">
+            <h3 class="titulo-tarjeta">3. Alimentación Saludable</h3>
+            <p class="texto">Una dieta balanceada con frutas, verduras, proteínas y omega-3 puede mejorar tu salud mental.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contenedor-columnas">
+        <div class="columna">
+          <div class="tarjeta">
+            <h3 class="titulo-tarjeta">4. Meditación y Mindfulness</h3>
+            <p class="texto">Practicar la atención plena ayuda a reducir la ansiedad y mejorar la concentración en el presente.</p>
+          </div>
+        </div>
+
+        <div class="columna">
+          <div class="tarjeta">
+            <h3 class="titulo-tarjeta">5. Dormir Bien</h3>
+            <p class="texto">Establece una rutina de sueño regular con 7-9 horas por noche para mejorar tu salud mental.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contenedor-columnas">
+        <div class="columna">
+          <div class="tarjeta">
+            <h3 class="titulo-tarjeta">6. Conexiones Sociales</h3>
+            <p class="texto">Mantén contacto con amigos y familiares. El apoyo social es crucial para la recuperación.</p>
+          </div>
+        </div>
+
+        <div class="columna">
+          <div class="tarjeta">
+            <h3 class="titulo-tarjeta">7. Técnicas de Relajación</h3>
+            <p class="texto">Respiración profunda, yoga, masajes y otras técnicas pueden reducir significativamente la ansiedad.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contenedor-columnas">
+        <div class="columna">
+          <div class="tarjeta">
+            <h3 class="titulo-tarjeta">8. Evitar Sustancias</h3>
+            <p class="texto">Limita el alcohol, cafeína y evita las drogas, ya que pueden empeorar los síntomas.</p>
+          </div>
+        </div>
+
+        <div class="columna">
+          <div class="tarjeta">
+            <h3 class="titulo-tarjeta">9. Establecer Metas</h3>
+            <p class="texto">Crea objetivos pequeños y alcanzables. Celebra cada logro, por pequeño que sea.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tarjeta tarjeta-importante">
+        <h3 class="titulo-tarjeta">Recuerda</h3>
+        <p class="texto">La recuperación es un proceso que toma tiempo. Sé paciente contigo mismo y celebra cada pequeño progreso. Combinar varias de estas estrategias junto con ayuda profesional suele dar los mejores resultados.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CONTACTOS -->
+  <section id="contactos" class="seccion">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Recursos y Contactos de Ayuda</h2>
+
+      <div class="alerta-emergencia">
+        <h3 class="titulo-alerta">⚠️ En caso de emergencia o pensamientos suicidas:</h3>
+        <p class="texto-alerta">Llama inmediatamente a los servicios de emergencia o a una línea de prevención del suicidio</p>
+      </div>
+
+      <div class="contenedor-recursos">
+        <div class="recurso">
+          <h3 class="titulo-recurso">📞 Líneas de Ayuda Internacional</h3>
+          <ul class="lista-recursos">
+            <li><strong>España:</strong> Teléfono de la Esperanza - 717 003 717</li>
+            <li><strong>México:</strong> SAPTEL - 55 5259 8121</li>
+            <li><strong>Argentina:</strong> Centro de Asistencia al Suicida - 135</li>
+            <li><strong>Chile:</strong> Salud Responde - 600 360 7777</li>
+            <li><strong>Colombia:</strong> Línea 106 - 01 8000 113 113</li>
+            <li><strong>Perú:</strong> Línea 113 - Salud Mental</li>
+            <li><strong>Uruguay:</strong> Línea de Prevención del Suicidio - 0800 0767</li>
+            <li><strong>Venezuela:</strong> Centro de Atención Psicológica - 0212-4163116</li>
+          </ul>
+        </div>
+
+        <div class="recurso">
+          <h3 class="titulo-recurso">🏥 Recursos Profesionales</h3>
+          <ul class="lista-recursos">
+            <li>Psicólogos y psiquiatras certificados</li>
+            <li>Centros de salud mental comunitarios</li>
+            <li>Hospitales con departamentos de psiquiatría</li>
+            <li>Clínicas de atención primaria</li>
+            <li>Servicios de urgencias psiquiátricas</li>
+            <li>Terapeutas especializados en TCC</li>
+          </ul>
+        </div>
+
+        <div class="recurso">
+          <h3 class="titulo-recurso">💻 Recursos en Línea</h3>
+          <ul class="lista-recursos">
+            <li>Terapia en línea con profesionales certificados</li>
+            <li>Grupos de apoyo virtuales</li>
+            <li>Aplicaciones de meditación y mindfulness</li>
+            <li>Plataformas educativas sobre salud mental</li>
+            <li>Foros moderados de apoyo</li>
+            <li>Videos educativos y webinars</li>
+          </ul>
+        </div>
+
+        <div class="recurso">
+          <h3 class="titulo-recurso">👥 Grupos de Apoyo</h3>
+          <ul class="lista-recursos">
+            <li>Grupos locales de apoyo para ansiedad</li>
+            <li>Grupos de apoyo para depresión</li>
+            <li>Comunidades en línea moderadas</li>
+            <li>Organizaciones sin fines de lucro de salud mental</li>
+            <li>Grupos de autoayuda basados en evidencia</li>
+            <li>Reuniones presenciales y virtuales</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tarjeta tarjeta-importante">
+        <h3 class="titulo-tarjeta">Recuerda:</h3>
+        <p class="texto"><strong>Buscar ayuda es un signo de fortaleza, no de debilidad.</strong> La ansiedad y la depresión son condiciones médicas reales y tratables. Con el apoyo adecuado, puedes recuperarte y vivir una vida plena y feliz.</p>
+        <p class="texto">No estás solo en esto. Millones de personas en todo el mundo experimentan estos trastornos y muchos se han recuperado con éxito.</p>
+      </div>
+
+      <div class="tarjeta">
+        <h3 class="titulo-tarjeta">Cómo Elegir un Profesional</h3>
+        <p class="texto"><strong>Al buscar ayuda profesional, considera:</strong></p>
+        <ul class="lista-sintomas">
+          <li>Verificar que esté certificado y licenciado</li>
+          <li>Buscar especialización en ansiedad o depresión</li>
+          <li>Preguntar sobre su enfoque terapéutico</li>
+          <li>Considerar la disponibilidad y ubicación</li>
+          <li>Evaluar la comodidad personal con el profesional</li>
+          <li>Verificar opciones de seguro o costos</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie-pagina">
+  <div class="contenedor">
+    <p class="texto-footer">Esta página es solo para fines informativos y no reemplaza el consejo médico profesional.</p>
+    <p class="texto-footer">Si estás experimentando síntomas graves, por favor busca ayuda profesional inmediatamente.</p>
+    <p class="texto-footer">© 2025 Salud Mental - Información y Recursos</p>
+  </div>
+</footer>
+</body>
+</html>
